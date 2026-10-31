@@ -370,7 +370,7 @@ footer{background:var(--navy);color:#c9d2de;padding:28px 0;text-align:center;fon
 
 </main>
 
-<footer><div class="wrap">臺北市內湖區大湖國民小學　教務處資訊組<button class="admin-link" id="adminBtn" type="button">管理員</button></div></footer>
+<footer><div class="wrap">主辦單位｜大湖國民小學教務處資訊組 <button class="admin-link" id="adminBtn" type="button">管理員</button></div></footer>
 
 </template>
 <div id="root"></div>
@@ -474,7 +474,7 @@ footer{background:var(--navy);color:#c9d2de;padding:28px 0;text-align:center;fon
     var box=$("admin");box.classList.remove("hide");
     box.textContent="檢查權限中…";
     box.scrollIntoView({block:"center"});
-    var denied="這個帳號沒有管理權限。請用管理員的 Claude 帳號登入後，再開啟這個頁面。";
+    var denied="這個帳號沒有管理權限。請用管理員帳號登入後，再開啟這個頁面。";
     try{
       if(typeof claude==="undefined")throw 0;
       var user=await claude.use("user");
