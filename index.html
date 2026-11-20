@@ -59,6 +59,7 @@ section{padding:48px 0}
 .track .js-form{align-self:flex-start;margin-top:16px;width:12.5rem;max-width:100%;text-align:center}
 .track .when{margin-top:10px;color:var(--muted);font-size:.95rem}
 
+
 /* track cards v2 */
 .track .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
 .grade{display:inline-block;padding:4px 18px;border-radius:999px;background:var(--tint-g);color:var(--green);font-size:1.4rem;font-weight:900;line-height:1.4;white-space:nowrap}
@@ -239,23 +240,6 @@ footer{background:var(--navy);color:#c9d2de;padding:28px 0;text-align:center;fon
   .hero svg{max-width:330px!important}
   .zebra{height:32px}
 }
-
-/* Modal form additions */
-.modal-overlay {position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.2s}
-.modal-overlay.show {opacity:1;pointer-events:auto}
-.modal {background:var(--surface);width:100%;max-width:500px;border-radius:18px;padding:24px;box-shadow:0 10px 30px rgba(0,0,0,0.2);position:relative;max-height:90vh;overflow-y:auto}
-.modal-close {position:absolute;top:16px;right:16px;background:none;border:none;font-size:1.5rem;line-height:1;cursor:pointer;color:var(--muted);padding:4px 8px;}
-.modal h3 {margin-bottom:16px;color:var(--green)}
-.modal-form .row {margin-bottom:16px}
-.modal-form label {display:block;margin-bottom:6px;font-weight:700;font-size:0.95rem;color:var(--ink)}
-.modal-form input[type="text"], .modal-form input[type="number"], .modal-form select, .modal-form input[type="file"] {width:100%;padding:10px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);box-sizing:border-box}
-.modal-form .checkbox-row {display:flex;align-items:flex-start;gap:8px;margin-bottom:20px}
-.modal-form .checkbox-row input {margin-top:4px}
-.modal-form .checkbox-row label {font-size:0.9rem;font-weight:400;line-height:1.5;margin:0}
-.modal-form .btn-submit {width:100%;text-align:center;margin-top:10px}
-.success-msg {display:none;text-align:center;padding:30px 10px;color:var(--green)}
-.success-msg h4 {font-size:1.5rem;margin:0 0 10px}
-.success-msg p {color:var(--ink);font-size:1.1rem}
 </style>
 </head>
 <body>
@@ -469,55 +453,7 @@ footer{background:var(--navy);color:#c9d2de;padding:28px 0;text-align:center;fon
 
 <footer><div class="wrap">主辦單位｜大湖國民小學教務處資訊組 <button class="admin-link" id="adminBtn" type="button">管理員</button></div></footer>
 
-<!-- 隱藏的報名表單 Modal -->
-<div id="poster-modal" class="modal-overlay">
-  <div class="modal">
-    <button class="modal-close" type="button" id="modal-close-btn" aria-label="關閉">&times;</button>
-    <h3>交通安全數位海報報名表</h3>
-    <form id="poster-form" class="modal-form">
-      <div class="row c2">
-        <div>
-          <label for="p-class">班級</label>
-          <select id="p-class" required>
-            <option value="">請選擇</option>
-            <option value="301">301</option><option value="302">302</option><option value="303">303</option><option value="304">304</option>
-            <option value="401">401</option><option value="402">402</option><option value="403">403</option>
-          </select>
-        </div>
-        <div>
-          <label for="p-seat">座號</label>
-          <input type="number" id="p-seat" min="1" max="99" required placeholder="例如: 08">
-        </div>
-      </div>
-      <div class="row">
-        <label for="p-name">學生姓名</label>
-        <input type="text" id="p-name" required>
-      </div>
-      <div class="row">
-        <label for="p-title">作品名稱</label>
-        <input type="text" id="p-title" required>
-      </div>
-      <div class="row">
-        <label for="p-file">作品檔案上傳</label>
-        <input type="file" id="p-file" required>
-        <p class="small" style="margin-top:4px">檔名：年級班級_座號_作品名稱 (例如：401_08_交通安全停看聽.pdf)<br>檔案大小需在 10MB 以內。</p>
-      </div>
-      <div class="checkbox-row">
-        <input type="checkbox" id="p-confirm" required>
-        <label for="p-confirm">我已確認上傳的海報畫面內完全沒有個人姓名與班級資訊，且為原創作品。</label>
-      </div>
-      <button type="submit" class="btn main btn-submit">確認送出報名</button>
-    </form>
-    <div id="poster-success" class="success-msg">
-      <svg viewBox="0 0 24 24" width="60" height="60" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:16px"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-      <h4 style="color:var(--green)">報名成功！</h4>
-      <p>我們已經收到你回覆的表單</p>
-      <button class="btn ghost" id="modal-ok-btn" type="button" style="border-color:var(--line);color:var(--ink);margin-top:20px;width:100%">關閉</button>
-    </div>
-  </div>
-</div>
 </template>
-
 <div id="root"></div>
 <script type="application/json" id="state">{"news": [{"id": "n2", "date": "2026-10-30", "tag": "報名", "title": "交通安全數位海報：12/8(二)開放線上報名", "text": "報名表單準備好後，會在這裡公告，並開啟「我要報名」按鈕。"}, {"id": "n1", "date": "2026-10-30", "tag": "公告", "title": "資訊競賽網站上線", "text": "賽程、評分標準和寒假自主學習題目都已公布，歡迎同學和家長查看。"}]}</script>
 <script id="app">(function(){
@@ -530,52 +466,10 @@ footer{background:var(--navy);color:#c9d2de;padding:28px 0;text-align:center;fon
   $("root").appendChild($("body-tpl").content.cloneNode(true));
 
   document.querySelectorAll(".js-form").forEach(function(a){
-    var formType = a.getAttribute("data-form");
-    
-    // 如果是海報報名，改為開啟 Modal
-    if(formType === "poster") {
-      a.onclick = function(e){
-        e.preventDefault();
-        $("poster-modal").classList.add("show");
-        $("poster-form").style.display = "block";
-        $("poster-success").style.display = "none";
-        $("poster-form").reset();
-      };
-      return; // 跳過原有的 disabled 判斷
-    }
-    
-    var u=FORMS[formType];
+    var u=FORMS[a.getAttribute("data-form")];
     if(u){a.href=u;a.target="_blank";a.rel="noopener"}
     else{a.removeAttribute("href");a.setAttribute("aria-disabled","true");a.style.opacity=".55";a.style.cursor="default";a.textContent+="（準備中）"}
   });
-  
-  // 綁定 Modal 相關的事件
-  var closeModal = function() {
-    $("poster-modal").classList.remove("show");
-  };
-  $("modal-close-btn").onclick = closeModal;
-  $("modal-ok-btn").onclick = closeModal;
-  $("poster-modal").onclick = function(e) {
-    if(e.target === this) closeModal();
-  };
-  
-  // 攔截表單送出
-  $("poster-form").onsubmit = function(e) {
-    e.preventDefault();
-    
-    var fileInput = $("p-file");
-    if (fileInput.files.length > 0) {
-      var fileSize = fileInput.files[0].size / 1024 / 1024; // 轉換為 MB
-      if (fileSize > 10) {
-        alert("檔案大小超過 10MB，請重新選擇檔案。");
-        return;
-      }
-    }
-    
-    // 隱藏表單，顯示成功訊息
-    $("poster-form").style.display = "none";
-    $("poster-success").style.display = "block";
-  };
 
   function el(tag,cls,text){var e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e}
 
